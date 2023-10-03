@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <title>5 Rows with Logos</title>
+</head>
+<style>
+    .logo-container,
+    .Partnerlogo-container,
+    .Partnerlogo2-container {
+        display: flex;
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+    }
+    
+    .logo,
+    .Partnerlogo,
+    .Partnerlogo2 {
+        height: 200px;
+        width: 200px;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    #resultcontainer {
+        background-color: rgb(255, 255, 255);
+        color: #fff;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: 30px;
+        /* Reduce the height to fit the content without scrolling */
+        height: 700px;
+        background-size: cover; /* Scale the image to fit within the container */
+        background-repeat: no-repeat; /* Prevent image repetition */
+        background-position: center center; /* Center the image horizontally and vertically */
+        transition: background-image 3s ease-in-out;
+
+    }
+
+    #qrContainer {
+        background-color: rgb(255, 255, 255);
+        color: #fff;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: 30px;
+        /* Reduce the height to fit the content without scrolling */
+        height: 1000px;
+        background-size: cover; /* Scale the image to fit within the container */
+        background-repeat: no-repeat; /* Prevent image repetition */
+        background-position: center center; /* Center the image horizontally and vertically */
+        transition: background-image 3s ease-in-out;
+        background-image: url("./images/qrcode.png");
+
+    }
+
+    /* Add this CSS for the transition effect */
+    #resultcontainer.image-transition {
+        transition: background-image 3s ease-in-out;
+    }
+
+
+    #resultwelcome {
+        background-color: rgb(0, 174, 255);
+        color: #fff;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: 100px;
+    }
+
+    .ads {
+        height: 500px;
+    }
+
+    /* Add this rule to make the page not scrollable */
+    body {
+        overflow: hidden;
+    }
+
+    /* Your existing styles here */
+
+    .result {
+        font-size: 16px; /* Default font size */
+    }
+
+    .name {
+        font-size: 90px; /* Adjust the font size as needed */
+    }
+
+    .org {
+        font-size: 50px; /* Adjust the font size as needed */
+    }
+
+    .position {
+        font-size: 30px; /* Adjust the font size as needed */
+    }
+
+   /* Apply horizontal scrolling animation to the carousel container */
+   @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(calc(-250px * 65)); /* Adjust based on the number of items */
+        }
+    }
+
+    .custom-carousel-container {
+        background: white;
+        box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
+        width: 100%; /* Set the width to 100% */
+        margin: auto;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .custom-carousel-container::before,
+    .custom-carousel-container::after {
+        background: linear-gradient(to right, white 0%, rgba(255, 255, 255, 0) 100%);
+        content: "";
+        position: absolute;
+        width: 100%; /* Set the width to 100% */
+        z-index: 2;
+    }
+
+    .custom-carousel-container::after {
+        right: 0;
+        top: 0;
+        transform: rotateZ(180deg);
+    }
+
+    .custom-carousel-container::before {
+        left: 0;
+        top: 0;
+    }
+
+    /* Apply horizontal scrolling animation to the carousel container */
+    .custom-carousel-inner {
+        display: flex;
+        flex-direction: row; /* Display items horizontally */
+        width: 1250px; /* Set the width based on the number of items (250px * 5) */
+        animation: scroll 60s linear infinite;
+        white-space: nowrap; /* Prevent items from wrapping to the next line */
+        overflow: hidden; /* Hide items overflowing the container */
+    }
+
+    .custom-carousel-container .custom-carousel-item {
+        height: auto;
+        width: auto; /* Set the width of each item */
+        margin-right: 30px;
+    }
+
+
+
+    svg {
+        font-family: 'Russo One', sans-serif;
+        display: flex;
+    }
+    svg text {
+        text-transform: uppercase;
+        animation: stroke 5s infinite alternate;
+        stroke-width: 2;
+        stroke: #000000;
+        font-size: 105px;
+    }
+
+    @keyframes stroke {
+    0%   {
+        fill: rgba(72,138,20,0); stroke: rgb(0, 0, 0);
+        stroke-dashoffset: 25%; stroke-dasharray: 0 50%; stroke-width: 2;
+    }
+    70%  {fill: rgba(72,138,20,0); stroke: rgb(0, 0, 0); }
+    80%  {fill: rgba(72,138,20,0); stroke: rgb(0, 0, 0); stroke-width: 3; }
+    100% {
+        fill: rgb(0, 0, 0); stroke: rgba(54,95,160,0); 
+        stroke-dashoffset: -25%; stroke-dasharray: 50% 0; stroke-width: 0;
+    }
+    }
+
+
+    
+
+
+</style>
+<body>
+    <div class="container mx-auto mt-5">
+        <div class="grid grid-cols-1 gap-4">
+            <!-- Row 1 -->
+            <div class="p-3">
+                <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1320 300">
+                    <text x="10" y="150" font-family="'Russo One', sans-serif" font-size="20" fill="black">
+                        ON-SITE 
+                        REGISTRATION!
+                    </text>
+                </svg>
+            </div>
+
+
+            <!-- Row 3 -->
+            <div id="resultcontainer" class="p-3 text-white">
+                <div id="resultwelcome">SCAN YOUR QR CODE</div>
+                <div class="result" id="result">
+                   
+                </div>
+            </div>
+
+            
+            
+            <!-- Row 2 with Logos -->
+            <div  id="qrContainer" class="grid grid-cols-3 gap-4 bg-200 p-4">
+               
+                
+            </div>
+            
+            
+            <!-- Row 4 -->
+   
+        <!-- Content for the second column in the second row -->
+        <div class="custom-carousel-container">
+            <div class="custom-carousel-inner" id="adsContainer">
+                <!-- Carousel items will be dynamically added here -->
+            </div>
+        </div>
+
+            <!-- Row 5 -->
+        <div class="grid grid-cols-2 gap-4">
+            <div>
+               
+            </div>
+            <div>
+                <!-- Content for the second column goes here -->
+            </div>
+        </div>
+            
+            
+        </div>
+    </div>
+    <!-- Add Bootstrap JS and jQuery scripts here if needed -->
+
+<script>
+    // Function to load images from Firebase Realtime Database and populate the carousel
+  // JavaScript
+function loadAdsImages() {
+    const adsContainer = document.getElementById('adsContainer');
+    const localAdsImages = [
+        'ADS.jpg',
+        '1.jpg',
+        'AGCI.jpg',
+        '2.jpg',
+        'CASAMBCHI.png',
+        '3.jpg',
+        'DOJ.png',
+        '4.jpg',
+        'HOLT.png',
+        '5.jpg',
+        'IACAT.jpg',
+        '6.jpg',
+        'ICA.png',
+        '7.jpg',
+        'LIFELINE.png',
+        '8.jpg',
+        'MADISON.png',
+        '9.jpg',
+        'S1.png',
+        '10.jpg',
+        'SPCO.png',
+        '11.jpg',
+        'SUNRISE.png',
+        '12.jpg',
+        'WIDE.png',
+        // Add more image file names as needed
+    ];
+
+    localAdsImages.forEach((imgUrl) => {
+        // Create an image element and set its source to the local image URL
+        const img = document.createElement('img');
+        img.src = './images/ads/' + imgUrl; // Assuming your images are in the './images/ads/' directory
+        img.classList.add('ads');
+
+        // Create a carousel item and append the image to it
+        const carouselItem = document.createElement('div');
+        carouselItem.classList.add('custom-carousel-item');
+        carouselItem.appendChild(img);
+
+        // Append the carousel item to the ads container
+        adsContainer.appendChild(carouselItem);
+    });
+
+    // Adjust the width of the carousel items based on the number of items
+    const carouselItems = adsContainer.querySelectorAll('.custom-carousel-item');
+    const carouselInner = document.querySelector('.custom-carousel-inner');
+
+    carouselInner.style.width = (carouselItems.length * 700) + 'px';
+
+    carouselItems.forEach((item) => {
+        item.style.marginRight = '30px';
+    });
+}
+
+// Call the function to load ads images when the page loads
+window.addEventListener('load', () => {
+    loadAdsImages();
+});
+
+</script>
+
+<script>
+
+  // Function to fetch image URLs from the local directory
+function fetchImageUrls() {
+    return new Promise((resolve, reject) => {
+        // List of image file names located in the local "./images/events" folder
+        const localImageFileNames = [
+            'EVENT.gif',
+            // Add more image file names as needed
+        ];
+
+        // Construct the full image URLs using the base path
+        const baseUrl = './images/events/';
+        const imageUrls = localImageFileNames.map((fileName) => baseUrl + fileName);
+
+        // Resolve the promise with the array of image URLs
+        resolve(imageUrls);
+    });
+}
+
+// Function to display the next image in the result container
+function displayRandomImage() {
+    // Get the result text
+    const resultText = document.getElementById('result').textContent;
+    const resultContainer = document.getElementById('resultcontainer');
+
+    // Get a random index within the bounds of the imageUrls array
+    const randomIndex = Math.floor(Math.random() * imageUrls.length);
+    const imageUrl = imageUrls[randomIndex];
+
+    // Hide the result elements
+    document.getElementById('resultwelcome').style.display = 'none';
+    document.getElementById('result').style.display = 'none';
+
+    // Set the background image immediately
+    resultContainer.style.backgroundImage = `url(${imageUrl})`;
+
+    // Add a class to trigger the transition effect after a delay
+    setTimeout(() => {
+        resultContainer.classList.add('image-transition');
+    }, 100);
+
+    // Set a timer to revert to the original design after 23 seconds
+    setTimeout(displayRandomImage, 23000);
+}
+
+
+
+// Call the fetchImageUrls function to get image URLs from the local directory
+fetchImageUrls()
+    .then((urls) => {
+        // Assign the fetched image URLs to the imageUrls array
+        imageUrls = urls;
+
+        // Call the displayRandomImage function to start the cycle
+        displayRandomImage();
+    })
+    .catch((error) => {
+        console.error("Error fetching image URLs:", error);
+    });
+
+    
+</script>
+</body>
+</html>
